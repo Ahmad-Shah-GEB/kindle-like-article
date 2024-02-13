@@ -82,7 +82,7 @@ function createPages(text, charsPerPage) {
 }
 
 // Example usage
-const pages = createPages(largeText, 1200); // Using your specific character count per page
+const pages = createPages(largeText, 1100); // Using your specific character count per page
 let currentPage = 0;
 
 function updatePage() {
