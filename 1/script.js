@@ -59,48 +59,49 @@ const largeText = `[মানুষ বানর থেকে এসেছে �
 বই: ভোর হলো দোর খোলো খুকুমণি ওঠো রে`;
 
 // Assuming largeText is correctly defined with backticks (`) and contains your large text
-
-function createPages(text, maxLinesPerPage) {
-    const lines = text.split('\n'); // Assuming your text will have newline characters to split by lines
-    let currentPageLines = [];
+function createPages(text, charsPerPage) {
     let pages = [];
-    
-    lines.forEach(line => {
-        if (currentPageLines.length < maxLinesPerPage) {
-            currentPageLines.push(line);
-        } else {
-            pages.push(currentPageLines.join('\n'));
-            currentPageLines = [line];
+    let currentIndex = 0;
+
+    while (currentIndex < text.length) {
+        let endIndex = currentIndex + charsPerPage;
+        // Ensure not cutting off in the middle of a word
+        if (endIndex < text.length) {
+            // Try to find a space or newline to end the page
+            while (endIndex > currentIndex && text[endIndex] !== ' ' && text[endIndex] !== '\n') {
+                endIndex--;
+            }
         }
-    });
-    
-    if (currentPageLines.length > 0) {
-        pages.push(currentPageLines.join('\n'));
+        // Add the current page's text to the pages array
+        pages.push(text.substring(currentIndex, endIndex).trim());
+        // Start the next page after the end of the current page
+        currentIndex = endIndex;
     }
-    
+
     return pages;
 }
 
-// Example usage with 30 lines per page
-const pages = createPages(largeText, 30); // Adjust this to change the number of lines per page
+// Example usage
+const pages = createPages(largeText, 1290); // Using your specific character count per page
 let currentPage = 0;
 
 function updatePage() {
     document.getElementById('text-box').innerText = pages[currentPage];
   
-    // Update the page number
+    // Update the page number display
     document.getElementById('page-number').innerText = `Page ${currentPage + 1} of ${pages.length}`;
 }
 
+// Event listeners for navigation
 document.getElementById('next-page').addEventListener('click', () => {
-    currentPage = (currentPage + 1) % pages.length;
+    currentPage = (currentPage + 1) % pages.length; // Loop to first page after the last
     updatePage();
 });
 
 document.getElementById('prev-page').addEventListener('click', () => {
-    currentPage = (currentPage - 1 + pages.length) % pages.length;
+    currentPage = (currentPage - 1 + pages.length) % pages.length; // Loop to last page before the first
     updatePage();
 });
 
+// Initialize the display with the first page's content
 document.addEventListener('DOMContentLoaded', updatePage);
-
