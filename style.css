@@ -67,12 +67,12 @@ button {
         height: auto; /* Auto height based on content */
         flex-direction: column; /* Keep buttons stacked */
         background: rgba(255, 255, 255, 0.9); /* Optional: semi-transparent background */
-        padding: 5px; /* Padding around buttons */
+        padding: 0px; /* Padding around buttons */
         box-shadow: -2px 0 5px rgba(0,0,0,0.5); /* Optional: add shadow for better visibility */
     }
 
     button {
-        padding: 10px;
+        padding: 2px;
         font-size: 14px; /* Adjust font size for mobile */
         margin: 5px 0; /* Adjust margin between buttons */
     }
