@@ -33,7 +33,7 @@ function createPages(text, maxPageSize) {
     return pages;
 }
 
-const pages = createPages(largeText, 2000); // Adjust 1000 based on your needs
+const pages = createPages(largeText, 1500); // Adjust 1000 based on your needs
 let currentPage = 0;
 
 function updatePage() {
