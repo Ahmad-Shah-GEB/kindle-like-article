@@ -13,7 +13,13 @@ body, html {
     height: 80%;
 }
 
-
+#text-box {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto; /* Adds scroll if content is too long */
+    border-right: 2px solid #000; /* Separates text box and navigation */
+    font-size: 1em; /* Default font size */
+}
 
 #navigation {
     display: flex;
@@ -29,40 +35,31 @@ button {
     cursor: pointer;
 }
 
-/* Add to your existing style.css */
-/* Adjustments to existing styles */
-#text-box {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto;
-    border-right: 2px solid #000;
-    font-size: 1em; /* Default font size */
-}
-
 @media (max-width: 768px) {
     #container {
         flex-direction: column;
         height: auto;
     }
+  
     #text-box {
         width: 100%;
-        height: auto; /* Change this to auto to use as much height as needed */
+        height: auto;
         border-right: none;
         border-bottom: 2px solid #000;
-        font-size: 1.25em; /* Increase font size on smaller screens */
+        font-size: 4vw; /* Responsive font size */
+        padding: 10px; /* Reduced padding */
+        min-font-size: 16px; /* Minimum font size for readability */
     }
+  
     #navigation {
         width: 100%;
-        flex-direction: row;
-        justify-content: space-around;
+        flex-direction: column; /* Adjusted to column for vertical alignment */
+        align-items: center; /* Center-align the items within the navigation */
     }
-    button {
-        font-size: medium; /* Increase button font size for better usability on mobile */
+  
+    button, #page-number {
+        font-size: medium; /* Adjusted font size for better usability */
+        width: auto; /* Ensure buttons and page number take only the space they need */
+        padding: 20px 10px; /* Adjust padding for better tap targets */
     }
-}
-
-#page-number {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 1em; /* Adjust the size as needed */
 }
