@@ -1,7 +1,7 @@
 // script.js
 let currentPage = 0;
 const pages = [
-    "আমি একটু বলি কেন আমি খুব বড় লেখা ফেসবুকে পড়তে বা লিখতে নিরুৎসাহিত বোধ করি।"
+    "bbkbkbibh hihihihiuh nhihihi"
 
 ];
 
