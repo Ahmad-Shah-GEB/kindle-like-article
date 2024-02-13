@@ -60,28 +60,29 @@ const largeText = `[মানুষ বানর থেকে এসেছে �
 
 // Assuming largeText is correctly defined with backticks (`) and contains your large text
 
-function createPages(text, maxPageSize) {
-    const paragraphs = text.split('\n\n');
-    let currentPageText = '';
+function createPages(text, maxLinesPerPage) {
+    const lines = text.split('\n'); // Assuming your text will have newline characters to split by lines
+    let currentPageLines = [];
     let pages = [];
     
-    paragraphs.forEach(paragraph => {
-        if ((currentPageText + paragraph).length + 2 <= maxPageSize || currentPageText === '') {
-            currentPageText += (currentPageText ? '\n\n' : '') + paragraph;
+    lines.forEach(line => {
+        if (currentPageLines.length < maxLinesPerPage) {
+            currentPageLines.push(line);
         } else {
-            pages.push(currentPageText);
-            currentPageText = paragraph;
+            pages.push(currentPageLines.join('\n'));
+            currentPageLines = [line];
         }
     });
     
-    if (currentPageText) {
-        pages.push(currentPageText);
+    if (currentPageLines.length > 0) {
+        pages.push(currentPageLines.join('\n'));
     }
     
     return pages;
 }
 
-const pages = createPages(largeText, 1000); // Adjust 1000 based on your needs
+// Example usage with 30 lines per page
+const pages = createPages(largeText, 30); // Adjust this to change the number of lines per page
 let currentPage = 0;
 
 function updatePage() {
@@ -90,7 +91,6 @@ function updatePage() {
     // Update the page number
     document.getElementById('page-number').innerText = `Page ${currentPage + 1} of ${pages.length}`;
 }
-
 
 document.getElementById('next-page').addEventListener('click', () => {
     currentPage = (currentPage + 1) % pages.length;
