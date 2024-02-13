@@ -31,48 +31,49 @@ body, html {
 button {
     padding: 30px 10px;
     margin: 10px 0;
-    font-size: medium;
+    font-size: small;
     cursor: pointer;
 }
 
-@media (max-width: 768px)  {
+@media (max-width: 768px) {
     body, html {
-        /* Remove the flex-start alignment to allow content to fill the screen naturally */
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
     }
     #container {
-        /* Setting to 100% viewport height may not be necessary if content dictates the height */
-        min-height: 100vh; /* Ensures minimum height but allows content to expand */
-        flex-direction: column; /* Stacks content vertically */
-        justify-content: flex-start; /* Aligns content to the top */
-    }
-  
-    #text-box {
-        flex: 1; /* Allows the text box to expand and fill available space */
-        width: 100%; /* Full width */
-        /* Adjust padding, border, and font size as needed */
-        padding: 10px;
-        font-size: calc(8px + 2vw); /* Responsive font size */
-        border: none; /* Adjust based on your design */
-    }
-  
-    #navigation {
-        /* Place navigation at the bottom or top as per your design preference */
-        position: fixed; /* Fixes navigation to the bottom of the viewport */
-        bottom: 0; /* Aligns to the bottom */
-        left: 0; /* Aligns to the left */
-        width: 100%; /* Full width */
-        justify-content: space-around; /* Distributes buttons evenly */
-        background: #fff; /* Optional: background color for visibility */
-        border-top: 2px solid #000; /* Adds separation from the content */
-    }
-  
-    button {
-        /* Adjust padding and font size for better fit on mobile */
-        padding: 10px;
-        font-size: 16px; /* Ensure readability */
-        margin: 5px 0; /* Reduce margin */
-        flex-grow: 1; /* Allows buttons to fill the container evenly */
+        flex-direction: row; /* Keep items side-by-side */
+        align-items: flex-start; /* Align items to the top */
+        height: auto; /* Adjust height based on content */
+        min-height: 100vh; /* Ensure it covers at least the full height of the viewport */
     }
 
-    /* Additional styles for #page-number if needed */
+    #text-box {
+        width: 75%; /* Allocate most of the screen width to the text */
+        flex-grow: 0; /* Prevent the text box from growing to fill extra space */
+        padding: 10px;
+        font-size: calc(8px + 2vw); /* Adjust font size for better readability */
+        border-right: 2px solid #000; /* Maintain border separation */
+        overflow-y: auto; /* Ensure scrolling is available for overflow content */
+        height: 100vh; /* Make text box full viewport height */
+    }
+
+     #navigation {
+        position: fixed; /* Fixed positioning to stick to a location */
+        top: 50%; /* Start at the middle of the page vertically */
+        right: 0; /* Align to the right edge of the viewport */
+        transform: translateY(-50%); /* Adjust the position to truly center it vertically */
+        width: auto; /* Auto width based on content */
+        height: auto; /* Auto height based on content */
+        flex-direction: column; /* Keep buttons stacked */
+        background: rgba(255, 255, 255, 0.9); /* Optional: semi-transparent background */
+        padding: 5px; /* Padding around buttons */
+        box-shadow: -2px 0 5px rgba(0,0,0,0.5); /* Optional: add shadow for better visibility */
+    }
+
+    button {
+        padding: 10px;
+        font-size: 14px; /* Adjust font size for mobile */
+        margin: 5px 0; /* Adjust margin between buttons */
+    }
 }
