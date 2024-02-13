@@ -1,8 +1,9 @@
 // script.js
 let currentPage = 0;
 const pages = [
-    "bbkbkbibh hihihihiuh nhihihi"
-
+    "bbkbkbibh hihihihiuh nhihihi",
+    "jbnkbg hikgigi gkuku",
+    "igygigkb hkgihi hiuhihgi",
 ];
 
 function nextPage() {
