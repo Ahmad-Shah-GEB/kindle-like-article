@@ -1,11 +1,9 @@
 // script.js
 let currentPage = 0;
 const pages = [
-    "This is first page.",
-    "This is second page.",
-    "This is third page.",
-
-    
+    "কাগজ",
+    "কলম",
+    "হাতি",
     ];
 
 function nextPage() {
