@@ -18,7 +18,7 @@ body, html {
     padding: 20px;
     overflow-y: auto; /* Adds scroll if content is too long */
     border-right: 2px solid #000; /* Separates text box and navigation */
-    font-size: 1em; /* Default font size */
+    font-size: 1.2em; /* Default font size */
 }
 
 #navigation {
@@ -46,7 +46,7 @@ button {
         height: auto;
         border-right: none;
         border-bottom: 2px solid #000;
-        font-size: 4vw; /* Responsive font size */
+        font-size: 5vw; /* Responsive font size */
         padding: 10px; /* Reduced padding */
         min-font-size: 16px; /* Minimum font size for readability */
     }
