@@ -35,31 +35,44 @@ button {
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px)  {
+    body, html {
+        /* Remove the flex-start alignment to allow content to fill the screen naturally */
+    }
     #container {
-        flex-direction: column;
-        height: auto;
+        /* Setting to 100% viewport height may not be necessary if content dictates the height */
+        min-height: 100vh; /* Ensures minimum height but allows content to expand */
+        flex-direction: column; /* Stacks content vertically */
+        justify-content: flex-start; /* Aligns content to the top */
     }
   
     #text-box {
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 2px solid #000;
-        font-size: 8vw; /* Responsive font size */
-        padding: 10px; /* Reduced padding */
-        min-font-size: 16px; /* Minimum font size for readability */
+        flex: 1; /* Allows the text box to expand and fill available space */
+        width: 100%; /* Full width */
+        /* Adjust padding, border, and font size as needed */
+        padding: 10px;
+        font-size: calc(8px + 2vw); /* Responsive font size */
+        border: none; /* Adjust based on your design */
     }
   
     #navigation {
-        width: 100%;
-        flex-direction: column; /* Adjusted to column for vertical alignment */
-        align-items: center; /* Center-align the items within the navigation */
+        /* Place navigation at the bottom or top as per your design preference */
+        position: fixed; /* Fixes navigation to the bottom of the viewport */
+        bottom: 0; /* Aligns to the bottom */
+        left: 0; /* Aligns to the left */
+        width: 100%; /* Full width */
+        justify-content: space-around; /* Distributes buttons evenly */
+        background: #fff; /* Optional: background color for visibility */
+        border-top: 2px solid #000; /* Adds separation from the content */
     }
   
-    button, #page-number {
-        font-size: medium; /* Adjusted font size for better usability */
-        width: auto; /* Ensure buttons and page number take only the space they need */
-        padding: 20px 10px; /* Adjust padding for better tap targets */
+    button {
+        /* Adjust padding and font size for better fit on mobile */
+        padding: 10px;
+        font-size: 16px; /* Ensure readability */
+        margin: 5px 0; /* Reduce margin */
+        flex-grow: 1; /* Allows buttons to fill the container evenly */
     }
+
+    /* Additional styles for #page-number if needed */
 }
