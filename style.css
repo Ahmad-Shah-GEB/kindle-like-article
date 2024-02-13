@@ -48,6 +48,7 @@ button {
         height: auto; /* Adjust height based on content */
         min-height: 100vh; /* Ensure it covers at least the full height of the viewport */
         justify-content: flex-start;
+        padding-top: 75px;
     }
 
     #text-box {
