@@ -1,0 +1,25 @@
+/* style.css */
+#book-container {
+    width: 60%;
+    margin: 0 auto;
+    text-align: justify;
+    position: relative;
+    height: 500px; /* Adjust based on your content or screen size */
+    overflow: hidden;
+}
+
+#book-content {
+    padding: 20px;
+    font-family: serif;
+    line-height: 1.6;
+}
+
+#next-page {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20%;
+    height: 100%;
+    background-color: rgba(0,0,0,0); /* Make invisible */
+    cursor: pointer;
+}
