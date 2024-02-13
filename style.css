@@ -51,7 +51,7 @@ button {
     }
 
     #text-box {
-        width: 88%; /* Allocate most of the screen width to the text */
+        width: 92%; /* Allocate most of the screen width to the text */
         flex-grow: 0; /* Prevent the text box from growing to fill extra space */
         padding: 5px;
         font-size: calc(8px + 2vw); /* Adjust font size for better readability */
