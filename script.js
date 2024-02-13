@@ -38,7 +38,11 @@ let currentPage = 0;
 
 function updatePage() {
     document.getElementById('text-box').innerText = pages[currentPage];
+  
+    // Update the page number
+    document.getElementById('page-number').innerText = `Page ${currentPage + 1} of ${pages.length}`;
 }
+
 
 document.getElementById('next-page').addEventListener('click', () => {
     currentPage = (currentPage + 1) % pages.length;
