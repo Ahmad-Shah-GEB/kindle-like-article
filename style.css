@@ -46,7 +46,7 @@ button {
         height: auto;
         border-right: none;
         border-bottom: 2px solid #000;
-        font-size: 7vw; /* Responsive font size */
+        font-size: 12vw; /* Responsive font size */
         padding: 10px; /* Reduced padding */
         min-font-size: 24px; /* Minimum font size for readability */
     }
