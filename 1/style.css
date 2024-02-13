@@ -18,7 +18,7 @@ body, html {
     padding: 20px;
     overflow-y: auto; /* Adds scroll if content is too long */
     border-right: 2px solid #000; /* Separates text box and navigation */
-    font-size: 1.2em; /* Default font size */
+    font-size: 1em; /* Default font size */
 }
 
 #navigation {
@@ -36,30 +36,46 @@ button {
 }
 
 @media (max-width: 768px) {
+    body, html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        justify-content: flex-start;
+    }
     #container {
-        flex-direction: column;
-        height: auto;
+        flex-direction: row; /* Keep items side-by-side */
+        align-items: flex-start; /* Align items to the top */
+        height: auto; /* Adjust height based on content */
+        min-height: 100vh; /* Ensure it covers at least the full height of the viewport */
+        justify-content: flex-start;
     }
-  
+
     #text-box {
-        width: 100%;
-        height: auto;
-        border-right: none;
-        border-bottom: 2px solid #000;
-        font-size: 7vw; /* Responsive font size */
-        padding: 10px; /* Reduced padding */
-        min-font-size: 24px; /* Minimum font size for readability */
+        width: 75%; /* Allocate most of the screen width to the text */
+        flex-grow: 0; /* Prevent the text box from growing to fill extra space */
+        padding: 10px;
+        font-size: calc(8px + 2vw); /* Adjust font size for better readability */
+        border-right: 2px solid #000; /* Maintain border separation */
+        overflow-y: auto; /* Ensure scrolling is available for overflow content */
+        height: 100vh; /* Make text box full viewport height */
     }
-  
-    #navigation {
-        width: 100%;
-        flex-direction: column; /* Adjusted to column for vertical alignment */
-        align-items: center; /* Center-align the items within the navigation */
+
+     #navigation {
+        position: fixed; /* Fixed positioning to stick to a location */
+        top: 50%; /* Start at the middle of the page vertically */
+        right: 0; /* Align to the right edge of the viewport */
+        transform: translateY(-50%); /* Adjust the position to truly center it vertically */
+        width: auto; /* Auto width based on content */
+        height: auto; /* Auto height based on content */
+        flex-direction: column; /* Keep buttons stacked */
+        background: rgba(255, 255, 255, 0.9); /* Optional: semi-transparent background */
+        padding: 0px; /* Padding around buttons */
+        box-shadow: -2px 0 5px rgba(0,0,0,0.5); /* Optional: add shadow for better visibility */
     }
-  
-    button, #page-number {
-        font-size: medium; /* Adjusted font size for better usability */
-        width: auto; /* Ensure buttons and page number take only the space they need */
-        padding: 20px 10px; /* Adjust padding for better tap targets */
+
+    button {
+        padding: 2px;
+        font-size: 14px; /* Adjust font size for mobile */
+        margin: 5px 0; /* Adjust margin between buttons */
     }
 }
