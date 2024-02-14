@@ -21,47 +21,49 @@ const largeText = `ইদানীং বিভিন্ন মানুষে�
 আমি আশাবাদী, যারা এখন \"মাইক্রোএভুলোশন হইলেও ম্যাক্রোএভুলোশন হয় না\" বলছেন, তারা যখন আরও আরও জানতে পারবেন, তখন বিভিন্ন বিজ্ঞানীর বলা বিভিন্ন থিওরিকে নিজ আইডিওলজিকে সত্যি প্রমাণ করার জন্য অ্যাবিউজ করবেন না। স্টিফেন জে. গুল্ড নিজেও অনেক ক্ষিপ্ত ছিলেন, তার থিওরিকে অপব্যবহার করা নিয়ে। আইডিওলজির অন্ধত্ব দূর হোক।`;
 
 // Assuming largeText is correctly defined with backticks (`) and contains your large text
-
-function createPages(text, maxPageSize) {
-    const paragraphs = text.split('\n\n');
-    let currentPageText = '';
+function createPages(text, charsPerPage) {
     let pages = [];
-    
-    paragraphs.forEach(paragraph => {
-        if ((currentPageText + paragraph).length + 2 <= maxPageSize || currentPageText === '') {
-            currentPageText += (currentPageText ? '\n\n' : '') + paragraph;
-        } else {
-            pages.push(currentPageText);
-            currentPageText = paragraph;
+    let currentIndex = 0;
+
+    while (currentIndex < text.length) {
+        let endIndex = currentIndex + charsPerPage;
+        // Ensure not cutting off in the middle of a word
+        if (endIndex < text.length) {
+            // Try to find a space or newline to end the page
+            while (endIndex > currentIndex && text[endIndex] !== ' ' && text[endIndex] !== '\n') {
+                endIndex--;
+            }
         }
-    });
-    
-    if (currentPageText) {
-        pages.push(currentPageText);
+        // Add the current page's text to the pages array
+        pages.push(text.substring(currentIndex, endIndex).trim());
+        // Start the next page after the end of the current page
+        currentIndex = endIndex;
     }
-    
+
     return pages;
 }
 
-const pages = createPages(largeText, 1000); // Adjust 1000 based on your needs
+// Example usage
+const pages = createPages(largeText, 1000); // Using your specific character count per page
 let currentPage = 0;
 
 function updatePage() {
     document.getElementById('text-box').innerText = pages[currentPage];
   
-    // Update the page number
+    // Update the page number display
     document.getElementById('page-number').innerText = `Page ${currentPage + 1} of ${pages.length}`;
 }
 
-
+// Event listeners for navigation
 document.getElementById('next-page').addEventListener('click', () => {
-    currentPage = (currentPage + 1) % pages.length;
+    currentPage = (currentPage + 1) % pages.length; // Loop to first page after the last
     updatePage();
 });
 
 document.getElementById('prev-page').addEventListener('click', () => {
-    currentPage = (currentPage - 1 + pages.length) % pages.length;
+    currentPage = (currentPage - 1 + pages.length) % pages.length; // Loop to last page before the first
     updatePage();
 });
 
+// Initialize the display with the first page's content
 document.addEventListener('DOMContentLoaded', updatePage);
