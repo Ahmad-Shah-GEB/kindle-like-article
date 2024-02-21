@@ -1,0 +1,83 @@
+/* style.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    display: flex;
+    width: 90%;
+    height: 80%;
+}
+
+#text-box {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto; /* Adds scroll if content is too long */
+    border-right: 2px solid #000; /* Separates text box and navigation */
+    font-size: 1em; /* Default font size */
+}
+
+#navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5px;
+}
+
+button {
+    padding: 30px 10px;
+    margin: 10px 0;
+    font-size: small;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    body, html {
+        margin: 0;
+        padding: 10;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+        justify-content: flex-start;
+    }
+    #container {
+        flex-direction: row; /* Keep items side-by-side */
+        align-items: flex-start; /* Align items to the top */
+        height: auto; /* Adjust height based on content */
+        min-height: 100vh; /* Ensure it covers at least the full height of the viewport */
+        justify-content: flex-start;
+        padding-top: 75px;
+    }
+
+    #text-box {
+        width: 92%; /* Allocate most of the screen width to the text */
+        flex-grow: 0; /* Prevent the text box from growing to fill extra space */
+        padding: 5px;
+        font-size: calc(8px + 2vw); /* Adjust font size for better readability */
+        border-right: 2px solid #000; /* Maintain border separation */
+        overflow-y: auto; /* Ensure scrolling is available for overflow content */
+        height: 100vh; /* Make text box full viewport height */
+    }
+
+     #navigation {
+        position: fixed; /* Fixed positioning to stick to a location */
+        top: 50%; /* Start at the middle of the page vertically */
+        right: 0; /* Align to the right edge of the viewport */
+        transform: translateY(-50%); /* Adjust the position to truly center it vertically */
+        width: 50px; /* Auto width based on content */
+        height: auto; /* Auto height based on content */
+        flex-direction: column; /* Keep buttons stacked */
+        background: rgba(255, 255, 255, 0.9); /* Optional: semi-transparent background */
+        padding: 2px; /* Padding around buttons */
+        box-shadow: -2px 0 5px rgba(0,0,0,0.5); /* Optional: add shadow for better visibility */
+    }
+
+    button {
+        padding: 2px;
+        font-size: 14px; /* Adjust font size for mobile */
+        margin: 5px 0; /* Adjust margin between buttons */
+        height: 150px
+    }
+}
